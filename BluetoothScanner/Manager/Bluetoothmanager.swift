@@ -38,7 +38,7 @@ class Bluetoothmanager:NSObject, CBCentralManagerDelegate, CBPeripheralDelegate 
         }
     }
     
-    private func startScan() {
+    func startScan() {
         availablePeripherals.removeAll() // 既存のデバイスを削除する
         availableServices.removeAll()
         availableCharacteristics.removeAll()
@@ -70,6 +70,10 @@ class Bluetoothmanager:NSObject, CBCentralManagerDelegate, CBPeripheralDelegate 
             availableServices = services
             onServicesUpdate?(services)
         }
+    }
+    
+    func discoverCharacteristics(for service: CBService) {
+        selectedPeripheral?.discoverCharacteristics(nil, for: service)
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: (any Error)?) {
