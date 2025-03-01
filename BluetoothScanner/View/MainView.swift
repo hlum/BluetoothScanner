@@ -8,17 +8,32 @@
 import SwiftUI
 
 struct MainView: View {
+    @State var vm = MainViewModel()
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            if vm.availablePeripheral.isEmpty {
+                ContentUnavailableView("Bluetooth デバイスがありません", systemImage: "exclamationmark.magnifyingglass")
+            } else {
+                List(vm.availablePeripheral, id: \.self) { peripheral in
+                    NavigationLink {
+
+                    } label: {
+                        Text(peripheral.name ?? "無名")
+                    }
+                }
+                .listStyle(.plain)
+            }
+            Button("Scan") {
+                vm.startScan()
+            }
+            .navigationTitle("デバイスリスト")
         }
-        .padding()
     }
 }
 
 #Preview {
-    MainView()
+    NavigationStack {
+        MainView()
+    }
 }

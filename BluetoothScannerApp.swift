@@ -11,7 +11,9 @@ import SwiftUI
 struct BluetoothScannerApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            NavigationView {
+                MainView()
+            }
         }
     }
 }
