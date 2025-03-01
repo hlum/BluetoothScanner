@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		B5526D322D733AFF00AFC1AD /* BluetoothScannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5526D312D733AFF00AFC1AD /* BluetoothScannerApp.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		B5526D2E2D733AFF00AFC1AD /* BluetoothScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BluetoothScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5526D312D733AFF00AFC1AD /* BluetoothScannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothScannerApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +37,7 @@
 		B5526D252D733AFF00AFC1AD = {
 			isa = PBXGroup;
 			children = (
+				B5526D312D733AFF00AFC1AD /* BluetoothScannerApp.swift */,
 				B5526D302D733AFF00AFC1AD /* BluetoothScanner */,
 				B5526D2F2D733AFF00AFC1AD /* Products */,
 			);
@@ -119,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B5526D322D733AFF00AFC1AD /* BluetoothScannerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
