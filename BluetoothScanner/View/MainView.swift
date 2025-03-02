@@ -16,13 +16,18 @@ struct MainView: View {
                 ContentUnavailableView("Bluetooth デバイスがありません", systemImage: "exclamationmark.magnifyingglass")
             } else {
                 List(vm.availablePeripheral, id: \.self) { peripheral in
-                    NavigationLink {
-
+                    Button {
+                        vm.selectedPeripheral = peripheral
+                        vm.connectTo(peripheral)
+                        
                     } label: {
                         Text(peripheral.name ?? "無名")
                     }
                 }
                 .listStyle(.plain)
+                .navigationDestination(item: $vm.selectedPeripheral) { selectedPeripheral in
+                    ServicesView(selectedPeripheral: selectedPeripheral)
+                }
             }
             Button("Scan") {
                 vm.startScan()

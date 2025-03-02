@@ -69,6 +69,10 @@ class Bluetoothmanager:NSObject, CBCentralManagerDelegate, CBPeripheralDelegate 
         onConnectionUpdate?(true) // ViewModelに接続完了通知
     }
     
+    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: (any Error)?) {
+        Logger.standard.info("接続失敗 \(error)")
+    }
+    
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: (any Error)?) {
         if let services = peripheral.services {
             availableServices = services
