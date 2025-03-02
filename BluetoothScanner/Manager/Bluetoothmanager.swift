@@ -54,6 +54,10 @@ class Bluetoothmanager:NSObject, CBCentralManagerDelegate, CBPeripheralDelegate 
         centralManager.stopScan()
         selectedPeripheral = peripheral
         selectedPeripheral?.delegate = self
+        guard centralManager.state == .poweredOn else {
+            Logger.standard.error("デバイスがオンになっていません")
+            return
+        }
         centralManager.connect(peripheral)
     }
     
