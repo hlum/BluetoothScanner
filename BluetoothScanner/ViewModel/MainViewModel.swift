@@ -29,4 +29,5 @@ final class MainViewModel {
             self?.availablePeripheral = Array(peripherals)
         }
     }
+    
 }

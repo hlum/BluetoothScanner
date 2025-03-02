@@ -6,13 +6,39 @@
 //
 
 import SwiftUI
+import CoreBluetooth
 
-struct Services: View {
+struct ServicesView: View {
+    let selectedPeripheral: CBPeripheral
+    @State private var vm: ServicesViewModel
+
+    init(selectedPeripheral: CBPeripheral) {
+        self.selectedPeripheral = selectedPeripheral
+        vm = .init(selectedPeripheral: selectedPeripheral)
+    }
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            if vm.availableServices.isEmpty {
+                ContentUnavailableView("サービスがありせん", systemImage: "exclamationmark.magnifyingglass")
+            } else {
+                List(vm.availableServices, id: \.self) { service in
+                    NavigationLink {
+                        
+                    } label: {
+                        VStack {
+                            Text(service.description)
+                            Text("id: " + service.uuid.uuidString)
+                        }
+                    }
+                }
+                .listStyle(.plain)
+                .navigationTitle("デバイスリスト")
+            }
+        }
+        .onAppear {
+            vm.listenForServices()
+        }
     }
 }
 
-#Preview {
-    Services()
-}
+
